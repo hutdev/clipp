@@ -1,6 +1,6 @@
 {
   "name": "clipp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Command LIne Parameter Parser for node.js",
   "main": "index.js",
   "repository": {
