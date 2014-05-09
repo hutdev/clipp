@@ -52,3 +52,7 @@ exports.parse = function(flagdef){
   }
   return cli;
 };
+
+exports.get = function(param){
+  //TODO: Return the value of the parameter 'param' or true if the flag 'param' is set. Return null if param is unknown
+};
