@@ -1,6 +1,6 @@
 "use strict";
 
-exports.parse = function(){
+exports.parse = function(flagdef){
   var cli = {
     node: process.argv[0],
     script: process.argv[1]
@@ -24,12 +24,20 @@ exports.parse = function(){
   function switchname(str){
     return str.match(/^--?([a-zA-Z0-9]+)/) ? RegExp.$1 : null;
   }
+  function definedflag(f){
+    var found = false, idx = 0;
+    if (flagdef && typeof(flagdef.length) === 'number')
+      while(!found && idx < flagdef.length)
+        found = flagdef[idx++] === f;
+    
+    return found;
+  }
   for (var i = 2; i < process.argv.length; i++){
     var name = switchname(process.argv[i]);
     if (name)
       //Flag or parameter
-      if(i === process.argv.length - 1)
-        //Last param, must be flag
+      if(definedflag(name) || i === process.argv.length - 1)
+        //explicit or implicit flag (i.e. last param)
         addflag(name);
       else{
         var nextname = switchname(process.argv[i + 1]);
