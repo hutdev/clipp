@@ -54,11 +54,23 @@ exports.parse = function(flagdef){
 };
 
 exports.get = function(param,cli){
+
+  function getSingle(p){
+    if (cli.params && cli.params[p])
+      return cli.params[p];
+    if (contains(cli.flags, p))
+      return true;
+    return null;
+  }
+
   if (!cli)
     cli = exports.parse();
-  if (cli.params && cli.params[param])
-    return cli.params[param];
-  if (contains(cli.flags, param))
-    return true;
-  return null;
+
+  if (typeof(param) === 'object' && typeof(param.length) === 'number')
+    for (var i in param){
+      var v = getSingle(param[i]);
+      if (v)
+        return v;
+    }
+  return getSingle(param);
 };
