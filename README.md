@@ -4,9 +4,9 @@
 ## A Command LIne Parameter Parser for node.js
 
 We differentiate between three types of command line parameters:
- a) stray parameters ('strayparams'): Parameters which are not prefixed by '-', '--' or a parameter key (e.g. '--key value')
- b) parameters ('params'): Parameters wich are prefixed by a parameter key: --key value
- c) flags ('flags'): Switches which are eiter on or off, i.e. do not provide a value (e.g. '--flag1 --flag2')
+1. stray parameters ('strayparams'): Parameters which are not prefixed by '-', '--' or a parameter key (e.g. '--key value')
+2. parameters ('params'): Parameters wich are prefixed by a parameter key: --key value
+3. flags ('flags'): Switches which are eiter on or off, i.e. do not provide a value (e.g. '--flag1 --flag2')
 
 Imagine the following command line is executed from /home/hut/dev/npm/clipp: 
 
