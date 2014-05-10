@@ -49,6 +49,7 @@ console.log(clipp.get('explicitflag',clipp.parse(['explicitflag'])));
 console.log(clipp.get('implicitflag'));
 console.log(clipp.get('nop'));
 console.log(clipp.get('hello'));
+console.log(clipp.get(['hello','h']));
 ```
 
 ...will output
@@ -60,3 +61,5 @@ true
 null
 world
 ```
+
+You can define alternative parameter names by passing an array of alternatives in the get method.
