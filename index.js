@@ -1,5 +1,13 @@
 "use strict";
 
+function contains(array,value){
+  var found = false;
+  if (array && typeof(array.length) === 'number')
+    for (var i = 0; !found && i < array.length; i++)
+      found = array[i] === value;
+  return found;
+}
+
 exports.parse = function(flagdef){
   var cli = {
     node: process.argv[0],
@@ -24,19 +32,11 @@ exports.parse = function(flagdef){
   function switchname(str){
     return str.match(/^--?([a-zA-Z0-9]+)/) ? RegExp.$1 : null;
   }
-  function definedflag(f){
-    var found = false, idx = 0;
-    if (flagdef && typeof(flagdef.length) === 'number')
-      while(!found && idx < flagdef.length)
-        found = flagdef[idx++] === f;
-    
-    return found;
-  }
   for (var i = 2; i < process.argv.length; i++){
     var name = switchname(process.argv[i]);
     if (name)
       //Flag or parameter
-      if(definedflag(name) || i === process.argv.length - 1)
+      if(contains(flagdef,name) || i === process.argv.length - 1)
         //explicit or implicit flag (i.e. last param)
         addflag(name);
       else{
@@ -53,6 +53,12 @@ exports.parse = function(flagdef){
   return cli;
 };
 
-exports.get = function(param){
-  //TODO: Return the value of the parameter 'param' or true if the flag 'param' is set. Return null if param is unknown
+exports.get = function(param,cli){
+  if (!cli)
+    cli = exports.parse();
+  if (cli.params && cli.params[param])
+    return cli.params[param];
+  if (contains(cli.flags, param))
+    return true;
+  return null;
 };
