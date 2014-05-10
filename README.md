@@ -41,4 +41,22 @@ Defines a single explit flag called 'explicitflag'. This will result in the foll
 
 'implicitflag' is recognized as a flag because it is not followed by a value definition.
 
+Use the 'get' method to retrieve the value of a parameter and to check whether a flag is set. Considering the command line above the following code...
 
+```javascript
+console.log(clipp.get('explicitflag'));
+console.log(clipp.get('explicitflag',clipp.parse(['explicitflag'])));
+console.log(clipp.get('implicitflag'));
+console.log(clipp.get('nop'));
+console.log(clipp.get('hello'));
+```
+
+...will output
+
+```
+anotherstray
+true
+true
+null
+world
+```
