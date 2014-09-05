@@ -1,19 +1,19 @@
 {
-  "name": "clipp",
-  "version": "0.0.5",
-  "description": "A Command LIne Parameter Parser for node.js",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hutdev/clipp.git"
-  },
-  "keywords": [
-    "cli", "command line", "command line parameters", "process.argv"
-  ],
-  "author": "hut",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hutdev/clipp/issues"
-  },
-  "homepage": "https://github.com/hutdev/clipp"
+    "name": "clipp",
+    "version": "0.0.5",
+    "description": "A Command LIne Parameter Parser for node.js",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/hutdev/clipp.git"
+    },
+    "keywords": [
+        "cli", "command line", "command line parameters", "process.argv"
+    ],
+    "author": "hut",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/hutdev/clipp/issues"
+    },
+    "homepage": "https://github.com/hutdev/clipp"
 }
